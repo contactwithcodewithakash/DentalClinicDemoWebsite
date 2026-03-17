@@ -123,21 +123,20 @@
             height: 80px;
         }
 
-        /* === UPDATED LOGO STYLES === */
+        /* Logo Styles */
         .logo {
             display: flex;
             align-items: center;
-            gap: 12px; /* Spacing between image and text */
+            gap: 12px;
             text-decoration: none;
         }
 
         .logo-img {
-            max-height: 40px; /* Slightly smaller to balance with text */
+            max-height: 40px;
             width: auto;
             object-fit: contain;
         }
 
-        /* Brand Name Text Style */
         .logo span {
             font-size: 1.5rem;
             font-weight: 700;
@@ -145,16 +144,14 @@
             line-height: 1;
         }
 
-        /* Footer Specific Logo Styles */
         footer .logo {
             margin-bottom: 1rem;
-            display: inline-flex; /* Prevents full width stretch in footer */
+            display: inline-flex;
         }
 
         footer .logo span {
-            color: var(--white); /* White text for footer */
+            color: var(--white);
         }
-        /* =========================== */
 
         .nav-links {
             display: flex;
@@ -374,7 +371,7 @@
         .gallery-overlay {
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(2, 132, 199, 0.85); /* Primary color with opacity */
+            background: rgba(2, 132, 199, 0.85); 
             display: flex;
             align-items: center;
             justify-content: center;
@@ -393,6 +390,46 @@
 
         .gallery-item:hover .gallery-overlay {
             opacity: 1;
+        }
+
+        /* Appointment Form Section */
+        .appointment-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            background: var(--white);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            font-family: inherit;
+            outline: none;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px var(--secondary);
+        }
+
+        .appointment-img {
+            border-radius: 15px;
+            object-fit: cover;
+            height: 100%;
         }
 
         /* Contact & Footer */
@@ -528,7 +565,8 @@
 
         /* Responsive */
         @media (max-width: 992px) {
-            .contact-grid {
+            /* Included appointment container in responsive breakdown */
+            .appointment-container, .contact-grid {
                 grid-template-columns: 1fr;
             }
             .hero-content h1 {
@@ -562,6 +600,14 @@
             }
         }
     </style>
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function() {
+            // NOTE: Replace 'YOUR_PUBLIC_KEY' with your actual EmailJS public key.
+            emailjs.init("YOUR_PUBLIC_KEY");
+        })();
+    </script>
 </head>
 <body>
 
@@ -577,7 +623,7 @@
                 <li><a href="#services">Services</a></li>
                 <li><a href="#gallery">Gallery</a></li>
                 <li><a href="#testimonials">Reviews</a></li>
-                <li><a href="#contact" class="btn btn-primary">Book Now</a></li>
+                <li><a href="#appointment" class="btn btn-primary">Book Now</a></li>
             </ul>
             <div class="hamburger">
                 <i class="fas fa-bars"></i>
@@ -591,7 +637,7 @@
                 <div class="hero-content reveal">
                     <h1>Healthy Smiles <span>Start Here</span></h1>
                     <p>Experience world-class dental care in a comfortable, modern, and friendly environment. Your smile is our top priority.</p>
-                    <a href="#contact" class="btn btn-primary">Contact Us</a>
+                    <a href="#appointment" class="btn btn-primary">Book Appointment</a>
                     <a href="#services" class="btn" style="margin-left: 10px; background: var(--bg-light); color: var(--primary);">Our Services</a>
                 </div>
             </div>
@@ -755,7 +801,7 @@
                 </div>
                 <div class="gallery-grid">
                     <div class="gallery-item reveal">
-                        <img src="https://images.unsplash.com/photo-1609840114035-3c981b782dfe?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Smile Transformation 1">
+                        <img src="https://images.unsplash.com/photo-1590664863685-a99ef05e9f61?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Smile Transformation 1">
                         <div class="gallery-overlay"><i class="fas fa-camera"></i></div>
                     </div>
                     <div class="gallery-item reveal">
@@ -763,11 +809,11 @@
                         <div class="gallery-overlay"><i class="fas fa-camera"></i></div>
                     </div>
                     <div class="gallery-item reveal">
-                        <img src="https://images.unsplash.com/photo-1609840114035-3c981b782dfe?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Smile Transformation 2">
+                        <img src="https://images.unsplash.com/photo-1522845015757-50bce044e5da?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Smile Transformation 2">
                         <div class="gallery-overlay"><i class="fas fa-camera"></i></div>
                     </div>
                     <div class="gallery-item reveal">
-                        <img src="https://images.unsplash.com/photo-1609840114035-3c981b782dfe?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Dentist working">
+                        <img src="https://images.unsplash.com/photo-1532938911079-1b06ac7ce122?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Dentist working">
                         <div class="gallery-overlay"><i class="fas fa-camera"></i></div>
                     </div>
                     <div class="gallery-item reveal">
@@ -775,8 +821,42 @@
                         <div class="gallery-overlay"><i class="fas fa-camera"></i></div>
                     </div>
                     <div class="gallery-item reveal">
-                        <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Smile Transformation 3">
+                        <img src="https://images.unsplash.com/photo-1596265371388-1298ebce9432?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Smile Transformation 3">
                         <div class="gallery-overlay"><i class="fas fa-camera"></i></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="appointment" style="background-color: var(--secondary);">
+            <div class="container">
+                <div class="appointment-container reveal">
+                    <div>
+                        <h2 style="color: var(--primary); margin-bottom: 1rem; font-size: 2rem;">Book an Appointment</h2>
+                        <p style="margin-bottom: 2rem;">Fill out the form below and our team will get back to you to confirm your appointment time.</p>
+                        
+                        <form id="contact-form">
+                            <div class="form-group">
+                                <input type="text" id="name" name="user_name" placeholder="Full Name" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="tel" id="phone" name="user_phone" placeholder="Phone Number" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" id="email" name="user_email" placeholder="Email Address" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="date" id="date" name="appointment_date" required>
+                            </div>
+                            <div class="form-group">
+                                <textarea id="message" name="message" rows="4" placeholder="How can we help you?"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary" style="width: 100%;">Submit Request</button>
+                            <p id="form-status" style="margin-top: 10px; display: none;"></p>
+                        </form>
+                    </div>
+                    <div>
+                        <img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Clinic Reception" class="appointment-img">
                     </div>
                 </div>
             </div>
@@ -933,6 +1013,34 @@
         const revealObserver = new IntersectionObserver(revealCallback, revealOptions);
         
         revealElements.forEach(el => revealObserver.observe(el));
+
+        // 4. EmailJS Form Submission Logic
+        window.onload = function() {
+            const form = document.getElementById('contact-form');
+            const statusText = document.getElementById('form-status');
+
+            if(form) {
+                form.addEventListener('submit', function(event) {
+                    event.preventDefault();
+                    statusText.style.display = 'block';
+                    statusText.style.color = '#0284c7';
+                    statusText.innerText = 'Sending request...';
+
+                    // NOTE: Replace 'YOUR_SERVICE_ID' and 'YOUR_TEMPLATE_ID' 
+                    // with your actual EmailJS credentials
+                    emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', this)
+                        .then(function() {
+                            statusText.style.color = 'green';
+                            statusText.innerText = 'Appointment request sent successfully! We will contact you soon.';
+                            form.reset();
+                        }, function(error) {
+                            statusText.style.color = 'red';
+                            statusText.innerText = 'Failed to send request. Please try calling us instead.';
+                            console.log('FAILED...', error);
+                        });
+                });
+            }
+        };
     </script>
 </body>
 </html>
